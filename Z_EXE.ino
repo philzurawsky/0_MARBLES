@@ -18,6 +18,8 @@ void setup() {
   spiralMotorQueue=xQueueCreate(10, sizeof(int));
   motorPowerQueue=xQueueCreate(10, sizeof(int));
   spiralEvent=xQueueCreate(10, sizeof(int));
+
+  inSetup = true; // Start setup sequence
   
   if (entranceEvent != NULL && exitEvent != NULL && spiralMotorQueue != NULL && motorPowerQueue != NULL ) {
   xTaskCreate(

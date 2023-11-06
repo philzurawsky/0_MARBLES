@@ -11,6 +11,8 @@ int beamBreakPins[2] = {7, 8}; //Beam breaks connected to these pins
 
 bool beamBreakArr[2] = {0,0}; // 0 for clear, 1 for broken
 
+bool inSetup;
+
 
 void write_motor_power() {
   analogWrite(MOTOR_PIN, power_request);

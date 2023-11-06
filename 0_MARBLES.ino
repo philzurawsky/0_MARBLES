@@ -17,6 +17,8 @@ void TaskHardwareInterface( void *pvParameters );
 #define ENCODER_PIN 2
 #define MOTOR_PIN 5
 
+#define MIN_RPM 1000 // Minimum operational Flywheel RPM
+
 //PINS
 
 int spiralPin = 3;

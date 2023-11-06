@@ -14,12 +14,12 @@ void motion_update_pid() {
 
 void start_motor() {
   double current_rpm = get_rpm();
-  if (current_rpm < 800 && power_request < 255) {
-    power_request = 255;
+  if (current_rpm < MIN_RPM) {
+    power_request = 128;
     xQueueSend(motorPowerQueue, &power_request, 0);
   }
-  if (current_rpm >= 800) flywheelOn = true;
-  else flywheelOn = false;
+  if (current_rpm >= MIN_RPM) inSetup = false;
+  else inSetup = true;
 }
 
 void handle_spiral(unsigned long curr_millis, unsigned long lastSpiralChange) {
@@ -55,13 +55,11 @@ void TaskMotionCtl(void *pvParameters) {
     
     handle_spiral(curr_millis, lastSpiralChange);
 
-    if (flywheelOn) {
+    if (!inSetup) {
       motion_update_pid();
-      func = "Running";
     }
     else {
       start_motor();
-      func = "motor start";
     }
 
     vTaskDelay(( TickType_t ) 10);
