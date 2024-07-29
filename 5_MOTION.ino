@@ -20,7 +20,6 @@ void start_motor() {
   }
   if (current_rpm >= MIN_RPM) inSetup = false;
   else inSetup = true;
-}
 
 void handle_spiral(unsigned long curr_millis, unsigned long lastSpiralChange) {
   curr_millis = millis();

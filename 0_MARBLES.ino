@@ -9,9 +9,9 @@ void TaskBlink( void *pvParameters );
 void TaskAnalogRead( void *pvParameters );
 void TaskHardwareInterface( void *pvParameters );
 
-#define LED_PIN 10
+#define LED_PIN 9
 
-#define N_LEDS 19
+#define N_LEDS 5
 #define OFFSET 1
 
 #define ENCODER_PIN 2
@@ -22,6 +22,7 @@ void TaskHardwareInterface( void *pvParameters );
 //PINS
 
 int spiralPin = 3;
+int spiralPower = 128;
 
 
 QueueHandle_t entranceEvent;

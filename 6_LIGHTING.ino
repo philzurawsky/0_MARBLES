@@ -1,15 +1,15 @@
 #define DIR -1
 
-#define ZONE1_START             0
-#define ZONE1_END               11
+#define ZONE1_START             1
+#define ZONE1_END               2
 #define ZONE1_ANIMATION_LENGTH  20
 
-#define ZONE2_START             12
-#define ZONE2_END               15
+#define ZONE2_START             3
+#define ZONE2_END               4
 #define ZONE2_ANIMATION_LENGTH  50
 
-#define ZONE3_START             15
-#define ZONE3_END               18
+#define ZONE3_START             0
+#define ZONE3_END               0
 #define ZONE3_ANIMATION_LENGTH  100
 
 enum zone {
@@ -110,16 +110,16 @@ void TaskLighting(void *pvParameters) {
       }
 
       //Entrance Animation
-      genAnimationFrame(now - lastEntranceActivation, ZONE1_START, ZONE1_END);
+      genAnimationFrame(millis() % 1000, ZONE1_START, ZONE1_END);
       // if (delta <= 200) {
       //   genAnimationFrame(millis(), 0, 11);
       //   //xQueueSend()
       // }
       //Spiral Animation
-      getSpiralAnimation((millis()) % 1000, ZONE2_START, ZONE2_END);
+      getSpiralAnimation((millis()) % 1000, ZONE2_START, ZONE2_END + 1);
 
       //Exit Animation
-      getExitAnimation(now - lastExitActivation, ZONE3_START, ZONE3_END);
+      getExitAnimation(millis() % 1000, ZONE3_START, ZONE3_END);
     }
 
     vTaskDelay(( TickType_t ) 1);

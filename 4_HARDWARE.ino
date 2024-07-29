@@ -71,7 +71,7 @@ void TaskHardwareInterface(void *pvParameters) {
 
     //Control Spiral
     if (xQueueReceive(spiralMotorQueue, &spiralOn, 0) == pdPASS) {
-      digitalWrite(spiralPin, spiralOn ? HIGH : LOW);
+      analogWrite(spiralPin, spiralOn ? spiralPower : 0);
     }
 
     //Control PID
